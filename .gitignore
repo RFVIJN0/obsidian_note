@@ -1,3 +1,78 @@
+
 .obsidian
-./*.pdf
-./*.swp
+
+# ======================================
+# 1. LaTeX / TeX 编译产生的辅助文件
+# ======================================
+
+## 核心辅助文件（每次编译都会生成，绝对不要提交）
+*.aux        # 交叉引用辅助文件[reference:0]
+*.log        # 编译日志文件[reference:1]
+*.out        # hyperref 包生成的 PDF 书签相关数据[reference:2]
+*.toc        # 目录数据[reference:3]
+*.lof        # 插图目录数据[reference:4]
+*.lot        # 表格目录数据[reference:5]
+
+## 中间文档与构建工具文件
+*.dvi        
+*.xdv        
+*.fdb_latexmk  # latexmk 工具的依赖数据库
+*.synctex.gz   # SyncTeX 正反向同步文件[reference:6]
+*.fls          # 文件列表记录[reference:7]
+
+## 参考文献处理相关文件
+*.bbl        # BibTeX/Biber 生成的格式化参考文献列表[reference:8]
+*.bcf        # BibLaTeX 传递至 Biber 的控制文件[reference:9]
+*.blg        # BibTeX/Biber 日志文件[reference:10]
+*.run.xml    # Biber 处理过程元数据[reference:11]
+
+## 其他常用 LaTeX 包产生的临时文件
+*.nav        # beamer 幻灯片导航数据[reference:12]
+*.snm        # beamer 幻灯片导航数据[reference:13]
+*.vrb        # beamer 逐行显示效果相关数据[reference:14]
+*.idx        # 索引原始数据[reference:15]
+*.ind        # 排序后的索引数据[reference:16]
+*.ilg        # makeindex 日志文件[reference:17]
+
+## 如果是大型文档，可能也会产生以下目录
+## 可以使用以下命令一键清理所有 LaTeX 临时文件：
+## latexmk -c   # 清理辅助文件，保留 PDF
+## latexmk -C   # 清理辅助文件和 PDF
+
+
+# ======================================
+# 2. Markdown 与构建产物
+# ======================================
+
+## 如果使用 Pandoc、mdbook、MkDocs 等工具构建（将 md 转为 html/pdf），
+## 应忽略最终生成的目标文件和工具自身产生的临时文件。
+docs/        # 如 MkDocs 的 site/、mdbook 的 book/ 等构建输出目录
+*.pdf
+*.html
+*.epub
+
+## Typst 项目（有些项目会混合使用）
+*.tmp      
+
+
+# ======================================
+# 3. 常见编辑器、操作系统临时文件与IDE配置
+# ======================================
+
+## 编辑器临时备份文件
+*.swp
+*.swo
+*~
+*.bak
+
+## macOS 系统文件
+.DS_Store
+.AppleDouble
+
+## Windows 系统文件
+Thumbs.db
+desktop.ini
+
+## IDE 配置（如果整个团队共享配置，慎用）
+.vscode/
+.idea/
